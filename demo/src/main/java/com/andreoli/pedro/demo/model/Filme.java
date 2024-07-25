@@ -14,5 +14,7 @@ public class Filme {
     private String nome;
     @ManyToOne
     private Diretor diretor;
+    @ManyToOne
+    private Escritor escritor;
 
 }

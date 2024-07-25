@@ -1,9 +1,8 @@
 package com.andreoli.pedro.demo.controller;
 
 import com.andreoli.pedro.demo.service.impl.CrudServiceImpl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 public abstract class CrudController<T> {
 
@@ -21,5 +20,12 @@ public abstract class CrudController<T> {
     }
 
     @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id){
+        crudService().delete(id);
+    }
 
+    @GetMapping("{id}")
+    public ResponseEntity<T> buscaId(@PathVariable Long id){
+        return ResponseEntity.ok( (T) crudService().findById(id));
+    }
 }
